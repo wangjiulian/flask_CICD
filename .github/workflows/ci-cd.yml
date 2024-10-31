@@ -29,3 +29,13 @@ jobs:
         run: |
           python -m unittest tests/test_app.py 
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if : github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
