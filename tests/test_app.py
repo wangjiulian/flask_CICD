@@ -1,12 +1,12 @@
-import unittest
+import pytest
 
 from demo.app import hello_world as hello
 
 
-class TestApp(unittest.TestCase):
+class TestApp:
     def test_hello(self):
-        self.assertEqual(hello(), 'Hello World!')
+        assert hello() == 'Hello World!'
 
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
